@@ -1,0 +1,17 @@
+build/
+cmake-build-*/
+.DS_Store
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+*.o
+*.a
+*.d
+*.su
+*.gcda
+*.gcno
+.cache/
+.vscode/.cortex-debug.*
+.settings/

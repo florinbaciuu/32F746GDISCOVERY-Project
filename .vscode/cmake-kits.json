@@ -1,0 +1,11 @@
+[
+  {
+    "name": "arm-none-eabi-gcc",
+    "compilers": {
+      "C": "arm-none-eabi-gcc",
+      "ASM": "arm-none-eabi-gcc"
+    },
+    "toolchainFile": "${workspaceFolder}/cmake/arm-none-eabi-gcc.cmake"
+  }
+]
+

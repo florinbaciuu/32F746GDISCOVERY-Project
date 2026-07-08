@@ -1,0 +1,24 @@
+target_sources(${PROJECT_TARGET}
+    PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}/bsp.c
+        ${CMAKE_CURRENT_LIST_DIR}/Display/bsp_display.c
+        ${CMAKE_CURRENT_LIST_DIR}/Touch/bsp_touch.c
+        ${CMAKE_CURRENT_LIST_DIR}/Audio/bsp_audio.c
+        ${CMAKE_CURRENT_LIST_DIR}/Storage/bsp_sdcard.c
+        ${CMAKE_CURRENT_LIST_DIR}/Storage/bsp_qspi.c
+        ${CMAKE_CURRENT_LIST_DIR}/Diagnostics/bsp_diagnostics.c
+        ${CMAKE_CURRENT_LIST_DIR}/IO/bsp_io.c
+        ${CMAKE_CURRENT_LIST_DIR}/Serial/bsp_serial.c
+)
+
+target_include_directories(${PROJECT_TARGET}
+    PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}
+        ${CMAKE_CURRENT_LIST_DIR}/Display
+        ${CMAKE_CURRENT_LIST_DIR}/Touch
+        ${CMAKE_CURRENT_LIST_DIR}/Audio
+        ${CMAKE_CURRENT_LIST_DIR}/Storage
+        ${CMAKE_CURRENT_LIST_DIR}/Diagnostics
+        ${CMAKE_CURRENT_LIST_DIR}/IO
+        ${CMAKE_CURRENT_LIST_DIR}/Serial
+)

@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug STM32F746G-DISCO",
+      "type": "cortex-debug",
+      "request": "launch",
+      "servertype": "openocd",
+      "cwd": "${workspaceFolder}",
+      "executable": "${workspaceFolder}/build/stm32f746g_lvgl_framework.elf",
+      "configFiles": [
+        "interface/stlink.cfg",
+        "target/stm32f7x.cfg"
+      ],
+      "device": "STM32F746NGHx",
+      "runToEntryPoint": "main",
+      "preLaunchTask": "CMake: build"
+    }
+  ]
+}
+
