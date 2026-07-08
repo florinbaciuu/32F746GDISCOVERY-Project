@@ -22,11 +22,13 @@
 #include "stm32f7xx_it.h"
 #include "main.h"
 #include "lvgl_port.h"
+#include "stm32746g_discovery_audio.h"
 
 #include "FreeRTOS.h"
 #include "task.h"
 
 extern void xPortSysTickHandler(void);
+extern SAI_HandleTypeDef haudio_out_sai;
 
 /** @addtogroup STM32F7xx_HAL_Examples
   * @{
@@ -147,6 +149,11 @@ void SysTick_Handler(void)
 /*void PPP_IRQHandler(void)
 {
 }*/
+
+void DMA2_Stream4_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(haudio_out_sai.hdmatx);
+}
 
 
 /**

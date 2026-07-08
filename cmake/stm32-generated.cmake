@@ -52,10 +52,12 @@ function(stm32_collect_generated_sources target_name)
             Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_lcd.c
             Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_sdram.c
             Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_ts.c
+            Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_audio.c
             Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_sd.c
             Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_qspi.c
             Drivers/BSP/Components/rk043fn48h/rk043fn48h.c
             Drivers/BSP/Components/ft5336/ft5336.c
+            Drivers/BSP/Components/wm8994/wm8994.c
             Drivers/BSP/Components/n25q128a/n25q128a.c
         )
 
