@@ -128,7 +128,7 @@ The initial display configuration uses SDRAM framebuffers at:
 
 The LVGL heap is placed in SDRAM at `0xC0100000`, after the double framebuffer region. This keeps internal SRAM available for stack, HAL state and performance-sensitive data.
 
-DMA2D acceleration is enabled in `Config/lv_conf.h` when `stm32f7xx_hal.h` is available. The BSP display implementation currently uses a CPU copy fallback; the next production step is replacing the internal copy path with DMA2D transfer and explicit cache maintenance per flushed area.
+DMA2D acceleration is enabled in `Config/lv_conf.h` when `stm32f7xx_hal.h` is available. The BSP display flush path uses DMA2D memory-to-memory transfers from the LVGL draw buffer into the active LTDC framebuffer. Cache maintenance is scoped to the source draw buffer and the affected framebuffer rows instead of cleaning the full framebuffer on every flush.
 
 ## Current Board Baseline
 
