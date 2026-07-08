@@ -18,6 +18,8 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
 
+option(ENABLE_LTO "Enable GCC link-time optimization for size-focused firmware builds" OFF)
+
 set(PROJECT_TARGET ${PROJECT_NAME})
 set(MCU_FAMILY STM32F7xx)
 set(MCU_PART STM32F746xx)
@@ -52,6 +54,23 @@ target_link_options(${PROJECT_TARGET}
         -Wl,-Map=${PROJECT_TARGET}.map
 )
 
+if(ENABLE_LTO)
+    target_compile_options(${PROJECT_TARGET}
+        PRIVATE
+            -flto
+            -fno-fat-lto-objects
+    )
+
+    target_link_options(${PROJECT_TARGET}
+        PRIVATE
+            -flto
+            -flto-partition=max
+            # FreeRTOS and newlib reference these through assembly/runtime paths that LTO cannot see.
+            -Wl,-u,vTaskSwitchContext
+            -Wl,-u,_sbrk
+    )
+endif()
+
 include(cmake/stm32-generated.cmake)
 
 add_subdirectory(Config)
@@ -70,5 +89,6 @@ set_property(TARGET ${PROJECT_TARGET} PROPERTY SUFFIX ".elf")
 add_custom_command(TARGET ${PROJECT_TARGET} POST_BUILD
     COMMAND ${CMAKE_OBJCOPY} -O ihex $<TARGET_FILE:${PROJECT_TARGET}> ${PROJECT_TARGET}.hex
     COMMAND ${CMAKE_OBJCOPY} -O binary $<TARGET_FILE:${PROJECT_TARGET}> ${PROJECT_TARGET}.bin
-    COMMENT "Generating HEX and BIN images"
+    COMMAND ${CMAKE_SIZE} --format=berkeley $<TARGET_FILE:${PROJECT_TARGET}>
+    COMMENT "Generating HEX, BIN and size report"
 )

@@ -199,18 +199,36 @@ If STM32CubeIDE is installed, the CMake toolchain file automatically prefers the
 
 If the build fails with `fatal error: stdint.h: No such file or directory`, the compiler is present but the target C library headers are missing. Install a complete Arm GNU Toolchain package that includes newlib/C library headers. Arm publishes official Arm GNU Toolchain downloads for Cortex-M bare-metal development at <https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads>.
 
-Configure and build:
+Configure and build the normal debug firmware:
 
 ```sh
-cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
-cmake --build build
+cmake --preset debug
+cmake --build --preset debug
 ```
 
-The build produces:
+Build the size-optimized production firmware:
+
+```sh
+cmake --preset release-size
+cmake --build --preset release-size
+```
+
+Optionally test link-time optimization for the smallest production image:
+
+```sh
+cmake --preset release-size-lto
+cmake --build --preset release-size-lto
+```
+
+`release-size-lto` enables `ENABLE_LTO=ON`. Keep it as an explicit production choice and validate it on hardware before treating it as the default flashing image.
+
+Each build prints an automatic firmware size report after linking and produces:
 
 - `build/stm32f746g_lvgl_framework.elf`
 - `build/stm32f746g_lvgl_framework.hex`
 - `build/stm32f746g_lvgl_framework.bin`
+
+For the production presets, replace `build/` with `build-release-size/` or `build-release-size-lto/`.
 
 ## Flashing
 

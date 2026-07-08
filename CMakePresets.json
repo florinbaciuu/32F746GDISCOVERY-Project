@@ -1,0 +1,57 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 22,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "description": "Debug firmware build with symbols and no LTO.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "ENABLE_LTO": "OFF"
+      }
+    },
+    {
+      "name": "release-size",
+      "displayName": "Release Size",
+      "description": "Size-optimized production build without LTO.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-release-size",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "MinSizeRel",
+        "ENABLE_LTO": "OFF"
+      }
+    },
+    {
+      "name": "release-size-lto",
+      "displayName": "Release Size + LTO",
+      "description": "Size-optimized production build with GCC link-time optimization enabled.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-release-size-lto",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "MinSizeRel",
+        "ENABLE_LTO": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "release-size",
+      "configurePreset": "release-size"
+    },
+    {
+      "name": "release-size-lto",
+      "configurePreset": "release-size-lto"
+    }
+  ]
+}

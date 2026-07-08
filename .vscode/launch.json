@@ -8,8 +8,12 @@
       "servertype": "openocd",
       "cwd": "${workspaceFolder}",
       "executable": "${workspaceFolder}/build/stm32f746g_lvgl_framework.elf",
+      "serverpath": "/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.openocd.macosaarch64_1.0.0.202601242230/tools/bin/openocd",
+      "searchDir": [
+        "/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.debug.openocd_2.3.300.202602021527/resources/openocd/st_scripts"
+      ],
       "configFiles": [
-        "interface/stlink.cfg",
+        "interface/stlink-dap.cfg",
         "target/stm32f7x.cfg"
       ],
       "device": "STM32F746NGHx",
@@ -18,4 +22,3 @@
     }
   ]
 }
-

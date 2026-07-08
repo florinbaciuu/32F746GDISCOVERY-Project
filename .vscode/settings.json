@@ -1,10 +1,11 @@
 {
-    "cmake.cmakePath": "cube-cmake",
-    "cmake.configureArgs": [
-        "-DCMAKE_COMMAND=cube-cmake"
-    ],
+    "cmake.cmakePath": "/opt/homebrew/bin/cmake",
     "cmake.preferredGenerators": [
         "Ninja"
     ],
-    "stm32cube-ide-clangd.path": "cube"
+    "cmake.configureOnOpen": false,
+    "stm32cube-ide-clangd.path": "cube",
+    "cortex-debug.openocdPath": "/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.openocd.macosaarch64_1.0.0.202601242230/tools/bin/openocd",
+    "cortex-debug.armToolchainPath": "/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.macosaarch64_1.0.0.202602081740/tools/bin",
+    "cortex-debug.gdbPath": "/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.macosaarch64_1.0.0.202602081740/tools/bin/arm-none-eabi-gdb"
 }
