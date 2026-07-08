@@ -14,5 +14,3 @@ cmake-build-*/
 *.gcda
 *.gcno
 .cache/
-.vscode/.cortex-debug.*
-.settings/
